@@ -1,0 +1,67 @@
+#include "../includes/push_swap.h"
+
+static int	check_int(char *num)
+{
+	int	i;
+
+	i = 0;
+	printf("check valifd number\n");
+	if (num[i] == '-')
+		i++;
+	if (!num[i])
+		return (0);
+	while (num[i])
+	{
+		if (!ft_isdigit(num[i]))
+		{
+			printf("'%c' is not a number\n", num[i]);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+static int	check_max(char *num)
+{
+	int	len;
+
+	len = ft_strlen(num);
+	if (len > 11)
+		return (0);
+	if ((len == 11 && num[0] != '-')
+		|| (len == 11 && ft_strncmp(num, "-2147483648", 11) > 0)
+		|| (len == 10 && ft_strncmp(num, "2147483647", 10) > 0))
+		return (0);
+	return (1);
+}
+
+static int	check_dup(char **av, int i, int size)
+{
+	int	j;
+
+	j = i + 1;
+	while (j < size)
+	{
+		if (!ft_strncmp(av[i], av[j], 11))
+			return (0);
+		j++;
+	}
+	return (1);
+}
+
+void	ft_check(int ac, char **av)
+{
+	int	i;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (!check_int(av[i]) || !check_max(av[i]) || !check_dup(av, i, ac))
+		{
+			write(2, "Error\n", 6);
+			exit(1);
+		}
+		i++;
+	}
+}
