@@ -7,6 +7,14 @@
 
 void	ft_check(int ac, char **av); /* ac: argument count, av: argument value */
 
+void	red(void);
+
+void	yellow(void);
+
+void	green(void);
+
+void	reset(void);
+
 typedef struct t_int
 {
 	int				n; /* El num introducido en argc */
