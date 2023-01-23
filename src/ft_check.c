@@ -84,4 +84,5 @@ void	ft_check(int ac, char **av)
 	}
 	green();
 	printf("valid numbers\t\tOK!\n");
+	reset();
 }
