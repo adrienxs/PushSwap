@@ -63,11 +63,10 @@ static int	check_dup(char **av, int i, int size, int *c)
 void	ft_check(int ac, char **av)
 {
 	int	i;
-	int c;
+	int	c;
 
 	c = 0;
 	i = 1;
-
 	yellow();
 	printf("checking numbers...\n");
 	while (i < ac)

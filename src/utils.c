@@ -12,6 +12,18 @@ t_int	*ft_last(t_int *lst)
 	return (curr);
 }
 
+t_int	*ft_before_last(t_int *lst)
+{
+	t_int	*curr;
+
+	curr = lst;
+	if (!curr)
+		return (NULL);
+	while (curr->next->next)
+		curr = curr->next;
+	return (curr);
+}
+
 t_int	*new_node(int value)
 {
 	t_int	*temp;
@@ -44,37 +56,14 @@ t_int	*init(int ac, char **av)
 	if (!av)
 		return (NULL);
 	temp = new_node(ft_atoi(av[1]));
-	printf("Init: %d\n", temp->n);
 	i = 2;
 	while (i < ac)
 	{
 		ft_addback(temp, ft_atoi(av[i]));
-		while (temp->next)
-		{
-			printf("next: %d\n", temp->next->n);
-			temp = temp->next;
-		}
 		i++;
 	}
 	return (temp);
-}
 
-void	red(void)
-{
-	printf("\033[0;31m");
+	
 }
-
-void	yellow(void)
-{
-	printf("\033[1;33m");
-}
-
-void	green(void)
-{
-	printf("\033[0;32m");
-}
-
-void	reset(void)
-{
-	printf("\033[0m");
-}
+	
