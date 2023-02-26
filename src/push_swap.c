@@ -7,6 +7,7 @@ int	main(int ac, char **av)
 	t_int	*tmpA;
 	t_int	*tmpB;
 	int		i;
+	int		sorted;
 
 	if (ac == 1)
 	{
@@ -15,7 +16,7 @@ int	main(int ac, char **av)
 	}
 	ft_check(ac, av);
 	a = init(ac, av);
-	b = init(ac, av);
+	b = NULL;
 
 	tmpA = a;
 	green();
@@ -26,12 +27,27 @@ int	main(int ac, char **av)
 	}
 	reset();
 
-	rrotate(&a);
-	push(&a, &b);
-	//rotate(&a);
+	sorted = ft_issorted(&a);
+
+	if (sorted == 0)
+		return (0);
 	
-	tmpA = a;
-	tmpB = b;
+	//rrotate(&a);
+	//push(&a, &b);
+	//rotate(&a);
+
+
+	if ( ac == 3)
+	{
+		tmpA = ft_numbs(&a);
+		tmpB = b;
+	}
+	else
+	{
+		tmpA = a;
+		tmpB = b;
+	}
+	
 	green();
 	while (tmpA)
 	{

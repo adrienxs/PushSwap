@@ -1,15 +1,25 @@
 #include "../includes/push_swap.h"
 
-t_int	*ft_last(t_int *lst)
+int		ft_issorted(t_int **lst)
 {
-	t_int	*curr;
+	t_int	*temp;
 
-	curr = lst;
-	if (!curr)
-		return (NULL);
-	while (curr->next)
-		curr = curr->next;
-	return (curr);
+	temp = *lst;
+	while (temp->next)
+	{
+		if (temp->n > temp->next->n)
+		{
+			red();
+			printf("is not sorted\n");
+			reset();
+			return (1);
+		}	
+		temp = temp->next;
+	}
+	yellow();
+	printf("is sorted\n");
+	reset();
+	return (0);
 }
 
 t_int	*ft_before_last(t_int *lst)
@@ -20,6 +30,18 @@ t_int	*ft_before_last(t_int *lst)
 	if (!curr)
 		return (NULL);
 	while (curr->next->next)
+		curr = curr->next;
+	return (curr);
+}
+
+t_int	*ft_last(t_int *lst)
+{
+	t_int	*curr;
+
+	curr = lst;
+	if (!curr)
+		return (NULL);
+	while (curr->next)
 		curr = curr->next;
 	return (curr);
 }
@@ -63,7 +85,5 @@ t_int	*init(int ac, char **av)
 		i++;
 	}
 	return (temp);
-
-	
 }
 	

@@ -27,6 +27,8 @@ typedef struct s_int /* 'typedef' es para hacer un alias de un tipo de variable,
 t_int	*init(int ac, char **av);
 t_int	*init_b(int value);
 
+int		ft_issorted(t_int **lst);
+
 t_int	*ft_last(t_int *lst);
 t_int	*ft_before_last(t_int *lst);
 
@@ -34,5 +36,7 @@ void	swap(t_int **lst);
 void	push(t_int **a, t_int **b);
 void	rotate(t_int **lst);
 void	rrotate(t_int **lst);
+
+t_int	*ft_numbs(t_int **lst);
 
 #endif
