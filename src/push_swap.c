@@ -7,7 +7,8 @@ int	main(int ac, char **av)
 	t_int	*tmpA;
 	t_int	*tmpB;
 	int		i;
-	int		sorted;
+	int		sorted_a;
+	int		sorted_b;
 	int		moves;
 
 	if (ac == 1)
@@ -26,8 +27,8 @@ int	main(int ac, char **av)
 		tmpA = tmpA->next;
 	}
 	reset();
-	sorted = ft_issorted(&a);
-	if (sorted == 0)
+	sorted_a = ft_issorted(&a);
+	if (sorted_a == 0)
 		return (0);
 	//rrotate(&a);
 	//push(&a, &b);
@@ -35,43 +36,15 @@ int	main(int ac, char **av)
 
 	tmpA = a;
 	tmpB = b;
-
 	moves = 0;
-	// if (ac == 4)
-	// {
-	// 	while (sorted == 1)
-	// 	{
-	// 		if (ft_sort3(&a) == 1)
-	// 			a = ft_mov3b(&a);
-	// 		else if (ft_sort3(&a) == 2)
-	// 			a = ft_mov3a(&a);
-			
-	// 		tmpA = a;
-	// 		moves++;
-	// 		sorted = ft_issorted(&a);
-	// 		printf("sorted: %d\n", sorted);
-	// 	}
-	// }
 
-	ft_mov5(&a, &b);
+	if (ac == 4)
+		ft_mov3(&a);
+	if (ac == 6)
+		ft_mov5(&a, &b);
+
 	tmpA = a;
 	tmpB = b;
-
-if (ac == 4)
-	{
-		while (sorted == 1)
-		{
-			if (ft_sort3(&a) == 1)
-				a = ft_mov3b(&a);
-			else if (ft_sort3(&a) == 2)
-				a = ft_mov3a(&a);
-			
-			tmpA = a;
-			moves++;
-			sorted = ft_issorted(&a);
-			printf("sorted: %d\n", sorted);
-		}
-	}
 
 
 
