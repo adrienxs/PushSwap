@@ -38,5 +38,10 @@ void	rotate(t_int **lst);
 void	rrotate(t_int **lst);
 
 t_int	*ft_numbs(t_int **lst);
+int		ft_sort3(t_int **lst);
+t_int	*ft_mov2(t_int **lst);
+t_int	*ft_mov3a(t_int **lst);
+t_int	*ft_mov3b(t_int **lst);
+void	ft_mov5(t_int **a, t_int **b);
 
 #endif

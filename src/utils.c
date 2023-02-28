@@ -1,5 +1,23 @@
 #include "../includes/push_swap.h"
 
+int	ft_sort3(t_int **lst)
+{
+	t_int	*temp;
+	int		count;
+
+	temp = *lst;
+	count = 0;
+	if (temp->n > temp->next->n)
+		count++;
+	if (temp->next->n > temp->next->next->n)
+		count++;
+	if (temp->next->next->n > temp->n)
+		count++;
+
+	printf("count: %d\n", count);
+	return (count);
+}
+
 int		ft_issorted(t_int **lst)
 {
 	t_int	*temp;
