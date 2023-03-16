@@ -40,5 +40,15 @@ void	rrotate(t_int **lst);
 int		ft_sort3(t_int **lst);
 void	ft_mov3(t_int **lst);
 void	ft_mov5(t_int **a, t_int **b);
+void	ft_mov100(t_int **a, t_int **b);
+
+void	ft_index(t_int	**lst);
+int		ft_ismin(t_int **lst, int index);
+int		ft_issmin(t_int **lst);
+
+void 	test_lst(t_int *a, t_int *b);
+void	test_index(t_int *a);
+
+
 
 #endif

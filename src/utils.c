@@ -1,4 +1,72 @@
 #include "../includes/push_swap.h"
+int		ft_issmin(t_int **lst)
+{
+	t_int	*temp;
+	int		r;
+	int		position;
+
+	temp = *lst;
+	position = 1;
+	while(temp)
+	{
+		if (temp->index == 1)
+		{
+			r = temp->n;
+			break;
+		}
+		position++;
+		temp = temp->next;
+	}
+	yellow();
+	//printf("second num min: %d and position: %d\n", r, position);
+	reset();
+	return (position);
+}
+
+int		ft_ismin(t_int **lst, int index)
+{
+	t_int	*temp;
+	int		r;
+	int		position;
+
+	temp = *lst;
+	position = 1;
+	while(temp)
+	{
+		if (temp->index == index)
+		{
+			r = temp->n;
+			break;
+		}
+		position++;
+		temp = temp->next;
+	}
+	yellow();
+	//printf("num min: %d and position: %d\n", r, position);
+	reset();
+	return (position);
+}
+
+void	ft_index(t_int	**lst)
+{
+	t_int	*i;
+	t_int	*j;
+
+	i = *lst;
+	j = *lst;
+	while(i)
+	{
+		j = *lst;
+		while(j)
+		{
+			if (i->n > j->n)
+				i->index++;
+			j = j->next;
+		}
+		//printf("index count: %d\n", i->index);
+		i = i->next;
+	}
+}
 
 int	ft_sort3(t_int **lst)
 {
@@ -13,8 +81,7 @@ int	ft_sort3(t_int **lst)
 		count++;
 	if (temp->next->next->n > temp->n)
 		count++;
-
-	printf("count: %d\n", count);
+	// printf("count: %d\n", count);
 	return (count);
 }
 
@@ -28,14 +95,14 @@ int		ft_issorted(t_int **lst)
 		if (temp->n > temp->next->n)
 		{
 			red();
-			printf("is not sorted\n");
+			printf("3 is not sorted\n");
 			reset();
 			return (1);
 		}	
 		temp = temp->next;
 	}
 	yellow();
-	printf("is sorted\n");
+	printf("3 is sorted\n");
 	reset();
 	return (0);
 }
