@@ -1,54 +1,87 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stddef.h>
 # include <stdlib.h>
-# include <stdio.h>
+# include <unistd.h>
 # include <limits.h>
-# include "libft/libft.h"
+# include <stdio.h>
 
-void	ft_check(int ac, char **av); /* ac: argument count, av: argument value */
-
-void	red(void);
-
-void	yellow(void);
-
-void	green(void);
-
-void	reset(void);
-
-typedef struct s_int /* 'typedef' es para hacer un alias de un tipo de variable, 'struct s_int' seria ahora un tipo de variable */
+typedef struct s_stack
 {
-	int				n; /* El num introducido en argv */
+	int				value;
 	int				index;
-	struct s_int	*prev; 
-	struct s_int	*next;
-}					t_int; /* Esto es el alias asigndo a 'struct s_int' */
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
+	struct s_stack	*next;
+}	t_stack;
 
-t_int	*init(int ac, char **av);
-t_int	*init_b(int value);
+/* Initialization */
 
-int		ft_issorted(t_int **lst);
+t_stack		*fill_stack_values(int ac, char **av);
+void		assign_index(t_stack *stack_a, int ac);
 
-t_int	*ft_last(t_int *lst);
-t_int	*ft_before_last(t_int *lst);
+/* Sorting Algorithms */
 
-void	swap(t_int **lst);
-void	push(t_int **a, t_int **b);
-void	rotate(t_int **lst);
-void	rrotate(t_int **lst);
+int			is_sorted(t_stack *stack);
+void		sort_3(t_stack **stack);
+void		sort(t_stack **stack_a, t_stack **stack_b);
 
-int		ft_sort3(t_int **lst);
-void	ft_mov3(t_int **lst);
-void	ft_mov5(t_int **a, t_int **b);
-void	ft_mov100(t_int **a, t_int **b);
+/* Position */
 
-void	ft_index(t_int	**lst);
-int		ft_ismin(t_int **lst, int index);
-int		ft_issmin(t_int **lst);
+int			get_lowest_index_position(t_stack **stack);
+void		get_target_position(t_stack **stack_a, t_stack **stack_b);
 
-void 	test_lst(t_int *a, t_int *b);
-void	test_index(t_int *a);
+/* Cost */
 
+void		get_cost(t_stack **stack_a, t_stack **stack_b);
+void		do_cheapest_move(t_stack **stack_a, t_stack **stack_b);
 
+/* Calculate Move */
+
+void		do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
+
+/* Operations */
+
+void		do_pa(t_stack **stack_a, t_stack **stack_b);
+void		do_pb(t_stack **stack_a, t_stack **stack_b);
+void		do_sa(t_stack **stack_a);
+void		do_sb(t_stack **stack_b);
+void		do_ss(t_stack **stack_a, t_stack **stack_b);
+void		do_ra(t_stack **stack_a);
+void		do_rb(t_stack **stack_b);
+void		do_rr(t_stack **stack_a, t_stack **stack_b);
+void		do_rrr(t_stack **stack_a, t_stack **stack_b);
+void		do_rra(t_stack **stack_a);
+void		do_rrb(t_stack **stack_b);
+
+/* Stack Functions */
+
+t_stack		*get_stack_bottom(t_stack *stack);
+t_stack		*get_stack_before_bottom(t_stack *stack);
+t_stack		*stack_new(int value);
+void		add_stack_bottom(t_stack **stack, t_stack *new);
+int			get_stack_size(t_stack	*stack);
+
+/* Utils */
+
+void		free_stack(t_stack **stack);
+long int	ft_atoi(const char *str);
+void		ft_putstr(char *str);
+int			nb_abs(int nb);
+
+/* Error */
+
+void		exit_error(t_stack **stack_a, t_stack **stack_b);
+
+/* Input Check */
+
+int			is_correct_input(char **av);
+int			is_digit(char c);
+int			is_sign(char c);
+int			nbstr_cmp(const char *s1, const char *s2);
+int			is_duplicate_in_stack(t_stack *stack);
 
 #endif

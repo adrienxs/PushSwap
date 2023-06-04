@@ -1,3 +1,4 @@
+
 NAME = push_swap
 
 DEF_COLOR =		\033[0;39m
@@ -17,9 +18,9 @@ MID_GRAY =		\033[38;5;245m
 DARK_GREEN =	\033[38;2;75;179;82m
 DARK_YELLOW =	\033[38;5;143m
 
-SRCS = *.c
+SRCS = main.c cost.c do_move.c init.c position.c push.c reverse_rotate.c rotate.c sort_3.c sort.c check_input.c stack.c swap.c error.c utils_libft.c
 
-INCLUDE = ./push_swap.h
+INCLUDE = ./includes/push_swap.h
 
 CC = gcc
 RM = rm -f

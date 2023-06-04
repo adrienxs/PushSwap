@@ -1,6 +1,6 @@
-#include "push_swap.h"
+#include "./includes/push_swap.h"
 
-void	cost(t_stack **stack_a, t_stack **stack_b)
+void	get_cost(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
@@ -16,30 +16,27 @@ void	cost(t_stack **stack_a, t_stack **stack_b)
 		tmp_b->cost_b = tmp_b->pos;
 		if (tmp_b->pos > size_b / 2)
 			tmp_b->cost_b = (size_b - tmp_b->pos) * -1;
-		tmp_b->cost_a = tmp_b->target;
-		if (tmp_b->target > size_a / 2)
-			tmp_b->cost_a = (size_a - tmp_b->target) * -1;
+		tmp_b->cost_a = tmp_b->target_pos;
+		if (tmp_b->target_pos > size_a / 2)
+			tmp_b->cost_a = (size_a - tmp_b->target_pos) * -1;
 		tmp_b = tmp_b->next;
 	}
 }
 
-/*	Finds the element in stack B with the cheapest cost to move to stack A
-	and moves it to the correct position in stack A. */
-
-void	cheapest_move(t_stack **stack_a, t_stack **stack_b)
+void	do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack		*tmp;
-	int			cheapest;
-	int			cost_a;
-	int			cost_b;
+	t_stack	*tmp;
+	int		cheapest;
+	int		cost_a;
+	int		cost_b;
 
 	tmp = *stack_b;
 	cheapest = INT_MAX;
 	while (tmp)
 	{
-		if (abs(tmp->cost_a) + abs(tmp->cost_b) < cheapest)
+		if (nb_abs(tmp->cost_a) + nb_abs(tmp->cost_b) < nb_abs(cheapest))
 		{
-			cheapest = abs(tmp->cost_a) + abs(tmp->cost_b);
+			cheapest = nb_abs(tmp->cost_b) + nb_abs(tmp->cost_a);
 			cost_a = tmp->cost_a;
 			cost_b = tmp->cost_b;
 		}

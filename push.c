@@ -1,33 +1,22 @@
-#include "push_swap.h"
+#include "./includes/push_swap.h"
 
-/*	Pushes the top element of src stack to the top of dest stack. DISTINTO*/
-/*tmp = *src;
-	tmp->next = *dst;
-	*dst = tmp;
-	*src = (*src)->next;*/
-static void	push(t_stack **src, t_stack **dst)
+static void	push(t_stack **src, t_stack **dest)
 {
 	t_stack	*tmp;
 
 	if (*src == NULL)
 		return ;
 	tmp = (*src)->next;
-	(*src)->next = *dst;
-	*dst = *src;
+	(*src)->next = *dest;
+	*dest = *src;
 	*src = tmp;
 }
-
-/*	Pushes the top element of stack b to the top of stack a.
-	Prints "pa" to the standard output. */
 
 void	do_pa(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_b, stack_a);
 	ft_putstr("pa\n");
 }
-
-/*	Pushes the top element of stack a to the top of stack b.
-	Prints "pb" to the standard output. */
 
 void	do_pb(t_stack **stack_a, t_stack **stack_b)
 {
